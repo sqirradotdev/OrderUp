@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Order Up</string>
     <string name="welcome_text">Selamat datang di aplikasi pengorderan (bukan plagiat).</string>
+    <string name="quantity">Kuantitas</string>
 </resources>

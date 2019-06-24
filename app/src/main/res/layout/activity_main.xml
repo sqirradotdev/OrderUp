@@ -23,10 +23,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quantity"
+        android:text="@string/quantity"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:textAllCaps="true" />
 
     <TextView
@@ -34,6 +34,6 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"  />
+        android:layout_marginStart="15dp"  />
 
 </LinearLayout>

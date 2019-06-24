@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Order Up</string>
     <string name="welcome_text">Welcome to our one and only totally-not-a-copycat ordering application.</string>
+    <string name="quantity">Quantity</string>
 </resources>
