@@ -3,4 +3,5 @@
     <string name="app_name">Order Up</string>
     <string name="welcome_text">Pesan kopi Anda disini!</string>
     <string name="quantity">Kuantitas</string>
+    <string name="button_working">Tombol ini berfungsi dengan baik.</string>
 </resources>

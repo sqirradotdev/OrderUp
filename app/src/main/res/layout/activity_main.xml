@@ -38,11 +38,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/qty_minus"
+            android:id="@+id/minus"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+"
+            android:text="-"
             android:textSize="20sp" />
 
         <TextView
@@ -55,11 +55,11 @@
             android:text="0" />
 
         <Button
-            android:id="@+id/qty_add"
+            android:id="@+id/plus"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-"
+            android:text="+"
             android:textSize="20sp" />
 
     </LinearLayout>
