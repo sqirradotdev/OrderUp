@@ -13,7 +13,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    final String KEY_COUNT = "count ubah qty";
+    final String KEY_COUNT = "count";
 
     Button order, plus, minus;
     TextView display;
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
 
+        minus.setEnabled(false);
+
         display = findViewById(R.id.qtyDisplay);
 
         order.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                minus.setEnabled(true);
                 count++;
                 render();
             }
@@ -52,7 +55,12 @@ public class MainActivity extends AppCompatActivity {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count--;
+                if (checkQty(count)) {
+                    minus.setEnabled(false);
+                }
+                else{
+                    count--;
+                }
                 render();
             }
         });
@@ -62,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
     void render() {
         display.setText(String.valueOf(count));
+    }
+
+    boolean checkQty(int q) {
+        if (q <= 0) return true;
+        else return false;
     }
 
     @Override
