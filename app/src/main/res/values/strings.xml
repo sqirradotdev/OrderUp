@@ -3,4 +3,5 @@
     <string name="welcome_text">Order your coffee here!</string>
     <string name="quantity">Quantity</string>
     <string name="button_working">This indicates that the button is working.</string>
+    <string name="order">Order</string>
 </resources>
