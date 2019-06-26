@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                minus.setEnabled(true);
                 count++;
                 render();
             }
@@ -55,12 +54,7 @@ public class MainActivity extends AppCompatActivity {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkQty(count)) {
-                    minus.setEnabled(false);
-                }
-                else{
-                    count--;
-                }
+                count--;
                 render();
             }
         });
@@ -70,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
     void render() {
         display.setText(String.valueOf(count));
+        minus.setEnabled(!isQtyZero(count));
     }
 
-    boolean checkQty(int q) {
-        if (q <= 0) return true;
-        else return false;
+    boolean isQtyZero(int q) {
+        return (q <= 0);
     }
 
     @Override
