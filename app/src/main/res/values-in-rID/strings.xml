@@ -5,4 +5,5 @@
     <string name="quantity">Kuantitas</string>
     <string name="button_working">Tombol ini berfungsi dengan baik.</string>
     <string name="order">Order</string>
+    <string name="coffee_type">Kopi</string>
 </resources>
