@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
@@ -8,6 +9,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/text_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -21,6 +23,7 @@
         android:background="@drawable/gradient" />
 
     <TextView
+        android:id="@+id/text_coffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -32,12 +35,21 @@
     <Spinner
         android:id="@+id/spinner_coffeetype"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginHorizontal="15dp"
-        android:entries="@array/array_coffetype" />
+        android:entries="@array/array_coffetype"
+        android:spinnerMode="dropdown" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="233dp"
+        android:layout_margin="15dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/latte" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/text_qty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -88,5 +100,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:text="@string/order" />
+
+    <TextView
+        android:id="@+id/debug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="debug"
+        android:textAllCaps="false" />
 
 </LinearLayout>

@@ -5,6 +5,9 @@
     <string name="button_working">This indicates that the button is working.</string>
     <string name="order">Order</string>
     <string name="coffee_type">Coffee</string>
+
+
+
     <string-array name="array_coffetype">
         <item>Latte</item>
         <item>Cappuccino</item>

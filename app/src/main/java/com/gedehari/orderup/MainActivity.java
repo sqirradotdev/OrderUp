@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     /* Declaring activity objects */
     Button order, plus, minus;
-    TextView display;
-    Spinner coffeetype = findViewById(R.id.spinner_coffeetype);
+    TextView display, debug;
+    Spinner spinner_coffee;
 
     LinearLayout layout;
 
@@ -38,17 +38,22 @@ public class MainActivity extends AppCompatActivity {
         order = findViewById(R.id.order);
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
+        spinner_coffee = findViewById(R.id.spinner_coffeetype);
+        debug = findViewById(R.id.debug);
 
         minus.setEnabled(false);
 
         display = findViewById(R.id.qtyDisplay);
 
+        /* Test button */
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(layout, MainActivity.this.getString(R.string.button_working), Snackbar.LENGTH_SHORT).show();
+                debug.setText(spinner_coffee.getSelectedItem().toString());
             }
         });
+        /* Add qty amount */
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 render();
             }
         });
+        /* Subtract qty amount */
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+        /* Update the screen at the end */
         render();
     }
 
