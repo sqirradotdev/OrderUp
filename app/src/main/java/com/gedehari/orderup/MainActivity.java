@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     /* Quantity counter */
     int quantity = 0;
+
+    String selectedCoffee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(layout, MainActivity.this.getString(R.string.button_working), Snackbar.LENGTH_SHORT).show();
-                debug.setText(spinner_coffee.getSelectedItem().toString());
             }
         });
         /* Add qty amount */
@@ -70,7 +73,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final ArrayAdapter<CharSequence> adapter_coffee = ArrayAdapter.createFromResource(this, R.array.array_coffetype, android.R.layout.simple_spinner_item);
+        adapter_coffee.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_coffee.setAdapter(adapter_coffee);
+        spinner_coffee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedCoffee = adapter_coffee.getItem(i).toString();
+                debug.setText("You selected " + selectedCoffee);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         /* Update the screen at the end */
