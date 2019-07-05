@@ -8,11 +8,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,29 +25,40 @@ public class MainActivity extends AppCompatActivity {
 
     /* Declaring activity objects */
     Button order, plus, minus;
-    TextView display, debug;
+    TextView display, debug, price;
     Spinner spinner_coffee;
+    ImageView display_coffee;
 
-    LinearLayout layout;
+    List<CoffeeData> listCoffeeData = new ArrayList<>();
+
+    RelativeLayout layout;
+
+    String selectedCoffee = "";
 
     /* Quantity counter */
     int quantity = 0;
-
-    String selectedCoffee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        listCoffeeData.add(new CoffeeData("Latte", R.drawable.latte));
+        listCoffeeData.add(new CoffeeData("Cappuccino", R.drawable.cappuccino));
+        listCoffeeData.add(new CoffeeData("Espresso", R.drawable.espresso));
+        listCoffeeData.add(new CoffeeData("Flat White", R.drawable.flat_white));
+        listCoffeeData.add(new CoffeeData("Matcha", R.drawable.matcha));
+
         if (savedInstanceState != null) quantity = savedInstanceState.getInt(KEY_COUNT, 0);
 
-        layout = findViewById(R.id.layout);
+        layout = findViewById(R.id.layoutParent);
         order = findViewById(R.id.order);
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
         spinner_coffee = findViewById(R.id.spinner_coffeetype);
         debug = findViewById(R.id.debug);
+        display_coffee = findViewById(R.id.coffeeDisplay);
+        price = findViewById(R.id.priceDisplay);
 
         minus.setEnabled(false);
 
@@ -61,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 quantity++;
-                render();
+                render(quantity);
             }
         });
         /* Subtract qty amount */
@@ -69,18 +84,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 quantity--;
-                render();
+                render(quantity);
             }
         });
 
-        final ArrayAdapter<CharSequence> adapter_coffee = ArrayAdapter.createFromResource(this, R.array.array_coffetype, android.R.layout.simple_spinner_item);
-        adapter_coffee.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        final ArrayAdapter<CoffeeData> adapter_coffee = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listCoffeeData);
+//        adapter_coffee.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_coffee.setAdapter(adapter_coffee);
         spinner_coffee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedCoffee = adapter_coffee.getItem(i).toString();
-                debug.setText("You selected " + selectedCoffee);
+                CoffeeData selCoffee = listCoffeeData.get(i);
+                display_coffee.setImageResource(selCoffee.getCoffeeDrawables());
+                selectedCoffee = selCoffee.getCoffeeData();
+                render(quantity);
             }
 
             @Override
@@ -91,13 +108,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         /* Update the screen at the end */
-        render();
+        render(quantity);
     }
 
     /* Update and render screen */
-    void render() {
+    void render(int quantity) {
         display.setText(String.valueOf(quantity));
         minus.setEnabled(!isQtyZero(quantity));
+        debug.setText("You selected " + selectedCoffee);
     }
 
     boolean isQtyZero(int q) {
