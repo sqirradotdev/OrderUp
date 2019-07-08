@@ -12,11 +12,12 @@
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#303030"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/text_welcome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:text="@string/welcome_text"
@@ -66,7 +67,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
-                android:text="Currency goes here" />
+                android:text="price" />
 
             <ImageView
                 android:id="@+id/coffeeDisplay"
@@ -75,6 +76,30 @@
                 android:layout_margin="15dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/latte" />
+
+            <TextView
+                android:id="@+id/text_jelly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="Jelly"
+                android:textAllCaps="true" />
+
+            <CheckBox
+                android:id="@+id/cb_bubble"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:text="Bubble" />
+
+            <CheckBox
+                android:id="@+id/cb_rainbowjelly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="15dp"
+                android:text="Rainbow Jelly" />
 
             <TextView
                 android:id="@+id/text_qty"
@@ -109,6 +134,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="10dp"
                     android:text="0"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
                 <Button
